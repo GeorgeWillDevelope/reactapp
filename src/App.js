@@ -1,59 +1,57 @@
-import React, { Component } from 'react';
+import React, {  useState, } from 'react';
+import Upload from './components/Upload';
+import Login from './components/Login';
+import "./App.css";
 
-export default class App extends Component {
-    static displayName = App.name;
 
-    constructor(props) {
-        super(props);
-        this.state = { forecasts: [], loading: true };
-    }
+function App(){
 
-    componentDidMount() {
-        this.populateWeatherData();
-    }
+    const navbarStyle = {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: 'rgb(16, 16, 255)',
+        color: 'white',
+        padding: '10px'
+    };
 
-    static renderForecastsTable(forecasts) {
-        return (
-            <table className='table table-striped' aria-labelledby="tabelLabel">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Temp. (C)</th>
-                        <th>Temp. (F)</th>
-                        <th>Summary</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {forecasts.map(forecast =>
-                        <tr key={forecast.date}>
-                            <td>{forecast.date}</td>
-                            <td>{forecast.temperatureC}</td>
-                            <td>{forecast.temperatureF}</td>
-                            <td>{forecast.summary}</td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
-        );
-    }
+    const contentStyle = {
+        backgroundImage: 'url("path/to/background/image.jpg")',
+        backgroundSize: 'cover',
+        minHeight: 'calc(100vh - 60px)', // Adjust for navbar height
+        padding: '20px'
+    };
 
-    render() {
-        let contents = this.state.loading
-            ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-            : App.renderForecastsTable(this.state.forecasts);
+    const [uploadPopup, setUploadPopup] = useState(false);
+    const [loginPopup, setLoginPopup] = useState(false);
 
-        return (
-            <div>
-                <h1 id="tabelLabel" >Weather forecast</h1>
-                <p>This component demonstrates fetching data from the server.</p>
-                {contents}
-            </div>
-        );
-    }
-
-    async populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        const data = await response.json();
-        this.setState({ forecasts: data, loading: false });
-    }
+  return (
+    <div>
+      <main>
+        <div style={navbarStyle}>
+          <div>
+            {/* Add your tools/buttons here on the left */}
+            <button>Library</button>
+            <button onClick={() => setUploadPopup(true)}>Upload</button>
+            {/* Add more tools/buttons as needed */}
+          </div>
+          <div>
+            {/* Add login component or button on the right */}
+            <button onClick={() => setLoginPopup(true)}>Login</button>
+          </div>
+        </div>
+        <div style={contentStyle}>
+          <h1>Welcome to DocNest</h1>
+          <p>Your document management solution.</p>
+          {/* Add any additional content or components as needed */}
+        </div>
+        <Upload trigger={uploadPopup} setTrigger={setUploadPopup}>
+        </Upload>
+        <Login trigger={loginPopup} setTrigger={setLoginPopup}>
+        </Login>
+      </main>
+    </div>
+  );
 }
+
+export default App;
