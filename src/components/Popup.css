@@ -91,6 +91,6 @@ input:invalid[focused="true"] ~ span{
 .registerLinkStyle{
     font-weight: bold;
     text-decoration: 'underline';
-    color: rgb(16, 16, 255);
+    color: '#a1e3ff';
     cursor: pointer;
 }

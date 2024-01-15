@@ -10,16 +10,33 @@ function App(){
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: 'rgb(16, 16, 255)',
+        backgroundColor: '#9fa5e4',
         color: 'white',
         padding: '10px'
     };
 
     const contentStyle = {
-        backgroundImage: 'url("path/to/background/image.jpg")',
-        backgroundSize: 'cover',
-        minHeight: 'calc(100vh - 60px)', // Adjust for navbar height
-        padding: '20px'
+      backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("/docnest.png")',
+      backgroundSize: '80%', // Reduce image size by 10%
+      backgroundPosition: 'right',
+      backgroundRepeat: 'no-repeat',
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column', // Display components in a column
+      justifyContent: 'flex-start', // Align components to the top
+      alignItems: 'flex-start', // Align components to the left
+      padding: '20px', // Add padding to the content
+    };
+    
+    const headerStyle = {
+      color: '#a1e3ff', // Baby blue color
+      fontSize: '48px',
+      textShadow: '2px 2px 4px #9fa5e4', // Darker blue contour
+    };
+    
+    const paragraphStyle = {
+      fontSize: '24px',
+      color: '#a1e3ff', // Baby blue color
     };
 
     const [uploadPopup, setUploadPopup] = useState(false);
@@ -41,9 +58,8 @@ function App(){
           </div>
         </div>
         <div style={contentStyle}>
-          <h1>Welcome to DocNest</h1>
-          <p>Your document management solution.</p>
-          {/* Add any additional content or components as needed */}
+          <h1 style={headerStyle}>Welcome to DocNest</h1>
+          <p style={paragraphStyle}>Your document management solution.</p>
         </div>
         <Upload trigger={uploadPopup} setTrigger={setUploadPopup}>
         </Upload>

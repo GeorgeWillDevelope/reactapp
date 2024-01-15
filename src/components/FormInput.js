@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./formInput.css";
+import "./Popup.css";
 
 const FormInput = (props) => {
   const [focused, setFocused] = useState(false);
