@@ -56,7 +56,7 @@ function  Upload(props){
       }
   
       try {
-        const response = await axios.post('https://localhost:7013/api/Home/UploadFile', formData, {
+        const response = await axios.post('https://localhost:7013/api/Home/UploadFiles', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
