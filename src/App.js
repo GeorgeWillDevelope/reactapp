@@ -1,5 +1,6 @@
 import React, {  useState, } from 'react';
 import Upload from './components/Upload';
+import ListAll from './components/ListAll';
 import Login from './components/Login';
 import "./App.css";
 
@@ -41,25 +42,24 @@ function App(){
 
     const [uploadPopup, setUploadPopup] = useState(false);
     const [loginPopup, setLoginPopup] = useState(false);
+    const [listAllPopup, setListAllPopup] = useState(false);
 
   return (
     <div>
       <main>
         <div style={navbarStyle}>
           <div>
-            {/* Add your tools/buttons here on the left */}
-            <button>Library</button>
+            <button onClick={() => setListAllPopup(!listAllPopup)}>Library</button>
             <button onClick={() => setUploadPopup(true)}>Upload</button>
-            {/* Add more tools/buttons as needed */}
           </div>
           <div>
-            {/* Add login component or button on the right */}
             <button onClick={() => setLoginPopup(true)}>Login</button>
           </div>
         </div>
         <div style={contentStyle}>
-          <h1 style={headerStyle}>Welcome to DocNest</h1>
-          <p style={paragraphStyle}>Your document management solution.</p>
+          <h1 style={listAllPopup ? {display: 'none'} : headerStyle}>Welcome to DocNest</h1>
+          <p style={listAllPopup ? {display: 'none'} : paragraphStyle}>Your document management solution.</p>
+          {listAllPopup && <ListAll trigger={listAllPopup} setTrigger={setListAllPopup} />}
         </div>
         <Upload trigger={uploadPopup} setTrigger={setUploadPopup}>
         </Upload>

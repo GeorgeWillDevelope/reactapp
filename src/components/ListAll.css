@@ -1,0 +1,70 @@
+.thumbnail-list-container {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* or space-between */
+  align-items: flex-start;
+  z-index: 1;
+}
+.thumbnail-item {
+  position: relative; /* Set the position of .thumbnail-item to relative */
+  width: 300px;
+  margin: 10px;
+  border: 1px solid #dddddd; /* Add a border to separate each thumbnail */
+  border-radius: 5px; 
+}
+
+.thumbnail-item img {
+  width: 100%;
+  height: auto;
+}
+
+.thumbnail-item div {
+  display: none;
+  position: absolute; /* Set the position of the div to absolute */
+  top: 0;
+  left: 0;
+  width: 100%; /* Make the div cover the entire .thumbnail-item */
+  height: 100%;
+  background-color: rgba(159, 165, 228, 0.9); /* Optional: Add a background color for better visibility */
+  padding: 10px;
+  color: white;
+  font-size: 18px;
+  font-weight: bolder;
+  border-radius: 5px; 
+  z-index: 2;
+}
+
+.thumbnail-item:hover div {
+  display: block;
+}
+
+.file-type-icon {
+  background-color: rgba(159, 165, 228, 0.9);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 2px; 
+  width: 50px !important; /* Adjust the width of the icon */
+  height: 50px  !important; /* Adjust the height of the icon */
+  z-index: 1;
+}
+
+.search-download-bar{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+}
+
+.download-button{
+  background-color: rgb(197, 197, 197);
+}
+
